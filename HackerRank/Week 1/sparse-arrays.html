@@ -1,0 +1,45 @@
+<script>
+  function matchingStrings(strings, queries) {
+    let countedArray = [];
+    let counter = 0;
+
+    queries = Array.from(new Set(queries));
+
+    for (let i = 0; i < queries.length; )
+      queries.forEach((querie) => {
+        strings.forEach((string) => {
+          console.log("string", string);
+          if (querie == string) {
+            counter++;
+            console.log("entrei e somie", counter);
+          }
+        });
+
+        countedArray.push(counter);
+        counter = 0;
+      });
+
+    return countedArray;
+  }
+
+  console.log(
+    matchingStrings(
+      [
+        "abcde",
+        "sdaklfj",
+        "asdjf",
+        "na",
+        "basdn",
+        "​​sdaklfj",
+        "asdjf",
+        "na",
+        "asdjf",
+        "na",
+        "basdn",
+        "​​sdaklfj",
+        "asdjf",
+      ],
+      ["abcde", "sdaklfj", "asdjf", "na", "basdn"]
+    )
+  );
+</script>

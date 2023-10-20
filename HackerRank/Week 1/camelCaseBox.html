@@ -1,0 +1,45 @@
+<script>
+  function processData(input) {
+    let str = input.replace(/[\r]/g, "").split("\n");
+
+    str.map((line) => {
+      let [operation, type, phrase] = line.split(";");
+
+      if (operation === "S") {
+        let words = phrase.split(/(?=[A-Z])/);
+        words = words.map((word, index) => {
+          if (index === words.length - 1 && type === "M") {
+            word = word.slice(0, -2);
+          }
+
+          return word.toLowerCase();
+        });
+
+        console.log(words.join(" "));
+      }
+
+      if (operation === "C") {
+        let words = phrase.split(" ");
+        words = words.map((word, index) => {
+          if (index === 0 && type !== "C") {
+            return word.toLowerCase();
+          }
+
+          if (index === words.length - 1 && type === "M") {
+            word += "()";
+          }
+
+          return word[0].toUpperCase() + word.slice(1);
+        });
+
+        console.log(words.join(""));
+      }
+    });
+  }
+
+  processData(`S;V;iPad
+  C;M;mouse pad
+  C;C;code swarm
+  S;C;OrangeHighlighter
+    `);
+</script>

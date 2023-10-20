@@ -1,0 +1,13 @@
+<script>
+  function divisibleSumPairs(n, k, arr) {
+    let divisibleCount = 0;
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < i; j++) {
+        if ((arr[i] + arr[j]) % k == 0) divisibleCount++;
+      }
+    }
+    return divisibleCount;
+  }
+
+  console.log(divisibleSumPairs(6, 3, [1, 3, 2, 6, 1, 2]));
+</script>
